@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mrchangming.mapper.userMapper">
+    <!-- int insertUser();   -->
+    <!--
+
+        mapper接口的全类名和映射文件的namespace一致
+        mapper接口中的方法的方法名要和映射文件中的sql的id保持一致
+    -->
+    <insert id="insertUser">
+        insert into smm_test_01 values (01,"jack","123456",23,"男","123qq@qq.com")
+    </insert>
+
+    <update id="updateUser">
+        update smm_test_01 set name='ybc',password='123' where id = 1
+    </update>
+
+    <!--    void deleteUser();-->
+    <delete id="deleteUser">
+        delete from smm_test_01 where id = 3
+    </delete>
+
+    <!--
+    resultType:设置结果类型。即查询的数据要转化为的java类型
+    resulMap:自定义映射，处理多对一或一对多的映射关系
+-->
+    <!--    mybatis.pojo.UserTest getUserById();-->
+    <select id="getUserById" resultType="Mrchangming.pojo.UserTest">
+        select * from smm_test_01 where id = 2
+    </select>
+
+    <!--    List<UserTest> getAllUser();-->
+    <select id="getAllUser" resultType="UserTest">
+        select * from smm_test_01
+    </select>
+
+
+</mapper>
